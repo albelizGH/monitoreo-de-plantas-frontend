@@ -1,0 +1,41 @@
+<form class="login-form" [formGroup]="form">
+  <div class="login-form__fields">
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input type="text" matInput [placeholder]="'Ingrese su email'" [formControl]="emailFormControl"
+        [errorStateMatcher]="matcher" />
+      <mat-hint></mat-hint>
+
+      @if (emailFormControl.hasError('required')) {
+      <mat-error>Email<strong> requerido</strong></mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Contraseña</mat-label>
+      <input type="password" matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher" />
+      <mat-hint></mat-hint>
+
+      @if (passwordFormControl.hasError('required')) {
+      <mat-error>Contraseña<strong> requerida</strong></mat-error>
+      }
+    </mat-form-field>
+
+  </div>
+
+
+  <div class="login-form__actions">
+    <a href="/not-found">¿Olvidaste tu contraseña?</a>
+    <button mat-raised-button (click)="login()" type="button">Iniciar Sesión</button>
+  </div>
+
+  <span class="conditions">Protegido por reCAPTCHA y sujeto a la <a href="/not-found">Política de Privacidad</a> y
+    <a href="/not-found">Condiciones</a>.
+  </span>
+
+  <div class="login-form__register">
+    <span>¿No tienes una cuenta? </span>
+    <a href="/register">Registrarse</a>
+  </div>
+
+</form>

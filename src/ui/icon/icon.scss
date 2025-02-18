@@ -1,0 +1,44 @@
+.circle {
+    width: 100%;
+    aspect-ratio: 1/1;
+    max-width: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.default {
+    background-color: none;
+}
+
+.lecturas {
+    background-color: #EBF8F9;
+    color: #539B5B;
+}
+
+.alertas-medias {
+    background-color: #FFFACD;
+    color: #FDCF57;
+}
+
+.alertas-rojas {
+    background-color: rgba(246, 150, 129, 0.5);
+    color: #FF1010;
+}
+
+.sensores {
+    background-color: #FADABC;
+    color: #FF8A48;
+}
+
+.default {
+    background-color: #f4f4f4;
+    color: var(--color-primary);
+}
+
+.mat-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

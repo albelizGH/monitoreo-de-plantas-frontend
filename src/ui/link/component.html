@@ -1,0 +1,16 @@
+@switch (type()) {
+@case('link-icon') {
+<a [href]="link()" [matTooltip]="legend()" [matTooltipPosition]="position.value!">
+  <mat-icon style="font-size: {{size()}};">{{icon()}}</mat-icon>
+</a>
+}
+@case('link-text') {
+<a [href]="link()" [matTooltip]="legend()" [matTooltipPosition]="position.value!">
+  {{text()}}
+</a>
+}@case ('link-icon-text') {
+<a [href]="link()" [matTooltip]="legend()" [matTooltipPosition]="position.value!">
+  <mat-icon>{{icon()}}</mat-icon> {{text()}}
+</a>
+}
+}

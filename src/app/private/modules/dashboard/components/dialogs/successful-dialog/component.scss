@@ -1,0 +1,43 @@
+* {
+  font-family: var(--font);
+}
+
+.content {
+  margin-bottom: 72px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  & h2 {
+    font-family: var(--font);
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 56px;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1rem;
+  text-align: center;
+  color: var(--color-dark-gray);
+}
+
+.success {
+  color: #659961;
+}
+
+.error {
+  color: red;
+}

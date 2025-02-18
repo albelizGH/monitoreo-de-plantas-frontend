@@ -1,0 +1,72 @@
+<div class="plantas-container">
+  <div class="header">
+    <h4>Plantas</h4>
+    <button type="button" class="desktop-button" mat-stroked-button (click)="tableService.create()">+ Crear
+      nueva planta</button>
+  </div>
+  <mat-divider />
+  <table>
+    <thead>
+      <tr>
+        <th>País</th>
+        <th>Nombre</th>
+        <th>
+          <span class="ok">
+            <ui-icon [icon]="'check'" [mode]="'lecturas'" [size]="'14px'" /> Ok
+          </span>
+        </th>
+        <th>
+          <span class="media">
+            <ui-icon [icon]="'priority_high'" [mode]="'alertas-medias'" [size]="'14px'" /> Medium
+          </span>
+        </th>
+        <th>
+          <span class="roja">
+            <ui-icon [icon]="'warning'" [mode]="'alertas-rojas'" [size]="'14px'" /> Red
+          </span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+
+
+      @for (item of data().table.plants; track $index) {
+      <tr [class.selected]="data().selected.plant.plant?.id === item.id">
+        <td>{{ item.country.name }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.readingsOk }}</td>
+        <td>{{ item.mediumAlerts }}</td>
+        <td>{{ item.redAlerts }}</td>
+        <td>
+          <button type="button" class="desktop-button" mat-raised-button (click)="tableService.showSensors(item)">
+            {{ data().selected.plant.plant?.id === item.id? 'Dejar de ver' : 'Ver planta' }}
+          </button>
+        </td>
+        <td>
+          <button class=" vertical-button" type="button" mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button type="button" mat-menu-item (click)="this.tableService.edit(item)">
+              <mat-icon>edit</mat-icon>
+              <span>Editar</span>
+            </button>
+            <button type="button" mat-menu-item (click)="this.tableService.delete(item)">
+              <mat-icon>delete</mat-icon>
+              <span>Eliminar</span>
+            </button>
+          </mat-menu>
+        </td>
+      </tr>
+      }
+
+
+    </tbody>
+  </table>
+
+  @if (data().table.plants.length === 0) {
+  <div class="empty">
+    <p>¡Aún no tienes ninguna planta registrada! Agrega una nueva y comienza a monitorear su estado.</p>
+  </div>
+  }
+</div>

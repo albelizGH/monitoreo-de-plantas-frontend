@@ -1,0 +1,34 @@
+<h2 mat-dialog-title class="dialog">Editar planta</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input type="text" matInput placeholder="Nombre de la planta" [formControl]="nameFormControl"
+        [errorStateMatcher]="matcher" />
+      <mat-hint></mat-hint>
+      @if (nameFormControl.hasError('required')) {
+      <mat-error>Nombre <strong>requerido</strong></mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>País</mat-label>
+      <mat-select name="country" [formControl]="countryFormControl">
+        @for (country of data.countries; track $index) {
+        <mat-option [value]="country">{{ country.name }}</mat-option>
+        }
+      </mat-select>
+
+      @if (countryFormControl.hasError('required')) {
+      <mat-error>Debes seleccionar un país</mat-error>
+      }
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <ui-button class="cancel-button" mat-dialog-close [typeOfButton]="'mat-stroked-button'" [legend]="'Cancelar'" />
+  <ui-button [typeOfButton]="'mat-raised-button'" [legend]="'Editar'" [mat-dialog-close]="true"
+    (buttonClick)="edit()" />
+</mat-dialog-actions>

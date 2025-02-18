@@ -1,0 +1,158 @@
+.plantas-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+
+  & .mat-divider {
+    margin-top: 1rem;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    h4 {
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    button {
+      background: none;
+      color: black;
+      padding: 5px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .create-btn {
+      background: none;
+      border: 1px solid #007bff;
+      color: #007bff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background: #007bff;
+        color: #fff;
+      }
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    thead {
+      color: #92969e;
+      color: var(--color-light-gray);
+
+      th {
+        font-weight: 500;
+
+        & span {
+          display: flex;
+          gap: 10px;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        font-size: 12px;
+
+        &.selected {
+          background: #f3f4f6;
+        }
+
+        .desktop-button {
+          background: #17a2b8;
+          color: white;
+          border: none;
+          padding: 5px 15px;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 12px;
+          width: 110px;
+        }
+
+        .vertical-button {
+          background: none;
+          color: black;
+          border: none;
+          cursor: pointer;
+          width: min-content;
+          padding: 0;
+        }
+
+        .mdc-button {
+          min-width: 25px;
+        }
+
+        .mat-icon {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  font-size: 1.2rem;
+  color: #92969e;
+  color: var(--color-light-gray);
+}
+
+@media (width <=850px) {
+  .plantas-container {
+
+    table {
+      th {
+        padding-left: 0px;
+      }
+
+      td {
+        padding: 7px;
+        text-align: left;
+      }
+    }
+
+  }
+}
+
+@media (width < 500px) {
+  .plantas-container {
+    table {
+      margin-top: 1rem;
+
+      td {
+        padding: 7px;
+        text-align: left;
+      }
+    }
+
+  }
+}
+
+#country {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+}
+
+img {
+  border-radius: 2px;
+}

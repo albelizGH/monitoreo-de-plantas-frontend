@@ -1,0 +1,78 @@
+@let isDisable = this.state.dashboard.selected.sensor.sensor?.disabled;
+
+<div class="dialog-header">
+  <div class="header">
+    <h2 mat-dialog-title class="dialog">Editar lecturas</h2>
+    <ui-button id="button" [typeOfButton]="'mat-icon-button'" [icon]="isDisable ? 'sensors' : 'sensors_off'"
+      (buttonClick)="onDisable()" />
+  </div>
+
+  <mat-dialog-content>
+    <form [formGroup]="form">
+
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input type="text" matInput placeholder="Nombre de la planta" [formControl]="nameFormControl" [readonly]="true"
+          [errorStateMatcher]="matcher" />
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Cantidad de lecturas ok</mat-label>
+        <input type="number" matInput [formControl]="readingsFormControl" [errorStateMatcher]="matcher"
+          [value]="data.readingsOk" [min]="minValueReadings" [max]="maxValueReadings" />
+        <mat-hint></mat-hint>
+        @if (readingsFormControl.hasError('min') || readingsFormControl.hasError('max')) {
+        <mat-error>
+          Las lecturas deben ser entre
+          <strong>{{minValueReadings}}</strong> y
+          <strong>{{maxValueReadings}}</strong>
+        </mat-error>
+        }
+        @if (readingsFormControl.hasError('required')) {
+        <mat-error>Lecturas <strong>requeridas</strong></mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Cantidad de alertas medias</mat-label>
+        <input type="number" matInput [formControl]="mediumAlertsFormControl" [errorStateMatcher]="matcher"
+          [value]="data.mediumAlerts" [min]="minValueReadings" [max]="maxValueReadings" />
+        <mat-hint></mat-hint>
+        @if (mediumAlertsFormControl.hasError('min') || mediumAlertsFormControl.hasError('max')) {
+        <mat-error>
+          Las lecturas deben ser entre
+          <strong>{{minValueReadings}}</strong> y
+          <strong>{{maxValueReadings}}</strong>
+        </mat-error>
+        }
+        @if (mediumAlertsFormControl.hasError('required')) {
+        <mat-error>Lecturas <strong>requeridas</strong></mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Cantidad de alertas rojas</mat-label>
+        <input type="number" matInput [formControl]="highAlertsFormControl" [errorStateMatcher]="matcher"
+          [value]="data.redAlerts" [min]="minValueReadings" [max]="maxValueReadings" />
+        <mat-hint></mat-hint>
+        @if (highAlertsFormControl.hasError('min') || highAlertsFormControl.hasError('max')) {
+        <mat-error>
+          Las lecturas deben ser entre
+          <strong>{{minValueReadings}}</strong> y
+          <strong>{{maxValueReadings}}</strong>
+        </mat-error>
+        }
+        @if (highAlertsFormControl.hasError('required')) {
+        <mat-error>Lecturas <strong>requeridas</strong></mat-error>
+        }
+      </mat-form-field>
+
+    </form>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="center">
+    <ui-button class="cancel-button" mat-dialog-close [typeOfButton]="'mat-stroked-button'" [legend]="'Cancelar'" />
+    <ui-button [typeOfButton]="'mat-raised-button'" [legend]="'Editar'" [mat-dialog-close]="true"
+      (buttonClick)="onEdit()" />
+  </mat-dialog-actions>
+</div>

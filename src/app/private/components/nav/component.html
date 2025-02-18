@@ -1,0 +1,63 @@
+<div id="nav-container">
+
+  @if (isMobile()) {
+  <ui-link id="logo" [link]="'/in'" [icon]="'landscape'" [type]="'link-icon'" [toolTipPosition]="2" [size]="'48px'" />
+  }@else {
+  <ui-link id="logo" [link]="'/in'" [icon]="'landscape'" [type]="'link-icon'" [toolTipPosition]="2" />
+  }
+
+  @if (isMobile()) {
+  <ui-link [link]="'/in'" [icon]="'language'" [legend]="'Dashboard'" [type]="'link-icon-text'" [text]="'Dashboard'"
+    [toolTipPosition]="2" />
+  <mat-divider />
+
+  }@else {
+  <ui-link [link]="'/in'" [icon]="'language'" [legend]="'Dashboard'" [type]="'link-icon'" [toolTipPosition]="2" />
+  }
+
+
+  @if(isMobile()){
+  <ui-link [link]="'/not-found'" [icon]="'videocam'" [legend]="'Monitoreo por planta'" [text]="'Monitoreo por planta'"
+    [type]="'link-icon-text'" [toolTipPosition]="2" />
+  <mat-divider />
+
+  }@else {
+  <ui-link [link]="'/not-found'" [icon]="'videocam'" [legend]="'Monitoreo por planta'" [type]="'link-icon'"
+    [toolTipPosition]="2" />
+  }
+
+
+  @if (isMobile()) {
+  <ui-link [link]="'/not-found'" [icon]="'sensors'" [legend]="'Histórico de sensores'" [type]="'link-icon-text'"
+    [text]="'Historico de sensores'" [toolTipPosition]="2" />
+  <mat-divider />
+
+  }@else {
+  <ui-link [link]="'/not-found'" [icon]="'sensors'" [legend]="'Histórico de sensores'" [type]="'link-icon'"
+    [toolTipPosition]="2" />
+  }
+
+  @if (isMobile()) {
+  <ui-link [link]="'/not-found'" [icon]="'villa'" [legend]="'Histórico de plantas'" [type]="'link-icon-text'"
+    [text]="'Historico de plantas'" [toolTipPosition]="2" />
+  <mat-divider />
+  }@else {
+  <ui-link [link]="'/not-found'" [icon]="'villa'" [legend]="'Histórico de plantas'" [type]="'link-icon'"
+    [toolTipPosition]="2" />
+  }
+
+  @if (isMobile()) {
+  <a matTooltip="Cerrar sesión" [matTooltipPosition]="'left'" (click)="this.authservice.logout()">
+    <mat-icon>logout</mat-icon> Cerrar sesión
+  </a>
+
+  <mat-divider />
+  }@else {
+  <a matTooltip="Cerrar sesión" [matTooltipPosition]="'left'" (click)="this.authservice.logout()">
+    <mat-icon>logout</mat-icon>
+  </a>
+  }
+
+
+
+</div>

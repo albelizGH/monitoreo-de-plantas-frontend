@@ -1,0 +1,13 @@
+button {
+  border-radius: 5px;
+}
+
+.stroked {
+  border: 1px solid var(--color-primary) !important;
+  color: var(--color-primary) !important;
+}
+
+.raised {
+  background-color: var(--color-primary) !important;
+  color: white !important;
+}

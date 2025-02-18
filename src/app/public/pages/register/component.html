@@ -1,0 +1,77 @@
+<form class="register-form" [formGroup]="form">
+  <div class="register-form__fields">
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Usuario</mat-label>
+      <input type="text" matInput [placeholder]="'Ingrese su email'" [formControl]="userFormControl"
+        [errorStateMatcher]="matcher" />
+      <mat-hint></mat-hint>
+
+      @if (userFormControl.hasError('required')) {
+      <mat-error>Usuario<strong> requerido</strong></mat-error>
+      }
+    </mat-form-field>
+
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input type="text" matInput [placeholder]="'Ingrese su email'" [formControl]="emailFormControl"
+        [errorStateMatcher]="matcher" />
+      <mat-hint></mat-hint>
+
+      @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+      <mat-error>Email<strong> requerido</strong></mat-error>
+      }
+
+      @if (emailFormControl.hasError('required')) {
+      <mat-error>Email<strong> requerido</strong></mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Contraseña</mat-label>
+      <input type="password" matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher" />
+      <mat-hint></mat-hint>
+
+      @if (passwordFormControl.hasError('pattern')) {
+      <mat-error>Al menos 8 caracteres y uno especial</mat-error>
+      }
+      @if (passwordFormControl.hasError('required')) {
+      <mat-error>Contraseña<strong> requerida</strong></mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Repetir contraseña</mat-label>
+      <input type="password" matInput [formControl]="repeatFormControl" [errorStateMatcher]="matcher" />
+      <mat-hint></mat-hint>
+
+      @if (passwordFormControl.hasError('pattern')) {
+      <mat-error>Al menos 8 caracteres y uno especial</mat-error>
+      }
+      @if(repeatFormControl.hasError('passwordMatch')) {
+      <mat-error>Las contraseñas no coinciden</mat-error>
+      }
+
+      @if (repeatFormControl.hasError('required')) {
+      <mat-error>Contraseña<strong> requerida</strong></mat-error>
+      }
+    </mat-form-field>
+
+
+    <div class="register-form__actions">
+      <button mat-raised-button type="button" (click)="registre()">Registrarse</button>
+    </div>
+
+  </div>
+
+  <span class="conditions">Protegido por reCAPTCHA y sujeto a la <a href="*">Política de Privacidad</a> y
+    <a href="*">Condiciones</a>.
+  </span>
+
+  <div class="register-form__register">
+    <span>¿Ya tienes cuenta? </span>
+    <a href="">Iniciar sesión</a>
+  </div>
+
+</form>

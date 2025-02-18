@@ -1,0 +1,41 @@
+<mat-drawer-container [hasBackdrop]="isMobile">
+  <mat-drawer #drawer [mode]="isMobile ? 'over' : 'side'" [opened]="!isMobile" [class]="{'mobile-drawer': isMobile}">
+    <app-nav [isMobile]="isMobile" />
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <main class="grid">
+      <div class="header">
+        @if (isMobile) {
+        <button type="button" mat-icon-button [hidden]="isMobile" (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        }
+        <div [hidden]="isMobile">
+          <h1>Monitoreo Global</h1>
+        </div>
+        <div class="actions">
+          @if (!isMobile) {
+          <button mat-icon-button type="button">
+            <mat-icon>language</mat-icon>
+          </button>
+          }
+          <button mat-icon-button type="button">
+            <mat-icon>settings</mat-icon>
+          </button>
+          <button mat-icon-button type="button">
+            <mat-icon matBadge="1" matBadgeSize="small" matBadgePosition="after" aria-hidden="false"
+              [matBadgeHidden]="false">
+              notifications
+            </mat-icon>
+          </button>
+          <span [hidden]="isMobile">{{ data().username }}</span>
+        </div>
+      </div>
+
+      <div class="contain">
+        <router-outlet />
+      </div>
+    </main>
+  </mat-drawer-content>
+</mat-drawer-container>

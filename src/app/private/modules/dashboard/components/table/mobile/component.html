@@ -1,0 +1,53 @@
+<div class="plantas-container">
+
+  <div class="header">
+    <h4>Plantas</h4>
+    <button type="button" class="desktop-button" mat-stroked-button (click)="tableService.create()">+ Crear
+      nueva
+      planta</button>
+  </div>
+
+  <mat-divider />
+
+
+  <table>
+    <tbody>
+
+      @for (item of data().table.plants; track $index) {
+      <tr [class.selected]=" data().selected.plant.plant?.id === item.id">
+        <td>{{ item.country.name.slice(0, 3) }}, {{ item.name }}</td>
+        <td>{{ item.readingsOk }}</td>
+        <td>{{ item.mediumAlerts }}</td>
+        <td>{{ item.redAlerts }}</td>
+        <td>
+          <button class="vertical-button" type="button" mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button type="button" mat-menu-item (click)="tableService.showSensors(item)">
+              <mat-icon>{{ data().selected.plant.plant?.id === item.id ? 'visibility_off' : 'visibility' }}</mat-icon>
+              <span>{{ data().selected.plant.plant?.id === item.id ? 'Dejar de ver' : 'Ver planta' }}</span>
+            </button>
+            <button type="button" mat-menu-item (click)="tableService.edit(item)">
+              <mat-icon>edit</mat-icon>
+              <span>Editar</span>
+            </button>
+            <button type="button" mat-menu-item (click)="tableService.delete(item)">
+              <mat-icon>delete</mat-icon>
+              <span>Eliminar</span>
+            </button>
+          </mat-menu>
+        </td>
+      </tr>
+      }
+
+    </tbody>
+
+  </table>
+
+  @if ( data().table.plants.length === 0) {
+  <div class="empty">
+    <p>¡Aún no tienes ninguna planta registrada! Agrega una nueva y comienza a monitorear su estado.</p>
+  </div>
+  }
+</div>

@@ -1,0 +1,13 @@
+<!-- eslint-disable @angular-eslint/template/no-duplicate-attributes -->
+<!-- eslint-disable @angular-eslint/template/no-inline-styles -->
+@if (!mode) {
+<mat-icon class="default" [style.font-size]="size()" [style.transform]="'scale(' + scale() + ')'">
+    {{ icon() }}
+</mat-icon>
+} @else {
+<div class="circle" [class]="mode()">
+    <mat-icon [style.font-size]="size()" [style.transform]="'scale(' + scale() + ')'">
+        {{ icon() }}
+    </mat-icon>
+</div>
+}

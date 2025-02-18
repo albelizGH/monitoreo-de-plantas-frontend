@@ -1,0 +1,46 @@
+<div class="plant">
+
+  <div class="plant-header">
+
+    <h4>Monitoreo por plantas</h4>
+
+    @if(data().selected.plant.plant !== null) {
+
+    <p>{{ data().selected.plant.plant?.country?.name }}, {{ data().selected.plant.plant?.name }}</p>
+
+    }
+
+  </div>
+
+  <div class="grid cards-container" [class.empty-plant]="data().selected.plant.plant === null">
+
+    @if(selectedPlant().status === 'LOADING') {
+
+    <div class="spinner-container">
+      <mat-spinner />
+    </div>
+
+    }@else if(selectedPlant().status === 'LOADED') {
+
+    @for (item of sensors(); track $index) {
+    <app-detail-card [data]="item" (edit)="edit($event)" />
+    }
+
+    }@else if (selectedPlant().status==='ERROR') {
+
+    <div class=" error">
+      <p>Ha ocurrido un error al cargar los datos</p>
+    </div>
+
+    }
+
+    <!-- Mensaje si no hay planta seleccionada -->
+    @if(selectedPlant().plant === null) {
+
+    <div class="empty-plant">
+      <p>Seleccione una planta de la tabla para ver los resultados</p>
+    </div>
+
+    }
+
+  </div>

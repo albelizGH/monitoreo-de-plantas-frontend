@@ -1,0 +1,35 @@
+<h2 mat-dialog-title class="dialog">Crear nueva planta</h2>
+<mat-dialog-content class="content">
+  <form [formGroup]="form">
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input type="text" matInput placeholder="Nombre de la planta" [formControl]="nameFormControl"
+        [errorStateMatcher]="matcher" />
+      <mat-hint></mat-hint>
+      @if (nameFormControl.hasError('required')) {
+      <mat-error>Nombre <strong>requerido</strong></mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>País</mat-label>
+      <mat-select name="country" [formControl]="selectedValueFormControl">
+
+        @for (item of data; track $index) {
+        <mat-option [value]="item">{{item.name}}</mat-option>
+        }
+
+      </mat-select>
+
+      @if (selectedValueFormControl.hasError('required')) {
+      <mat-error>Debes seleccionar un país</mat-error>
+      }
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <ui-button class="cancel-button" mat-dialog-close [typeOfButton]="'mat-stroked-button'" [legend]="'Cancelar'" />
+  <ui-button [typeOfButton]="'mat-raised-button'" [legend]="'Crear'" [mat-dialog-close]="true"
+    (buttonClick)="create()" />
+</mat-dialog-actions>

@@ -1,0 +1,36 @@
+@if(state().dashboard.status === 'LOADING'){
+<div class="spinner-container">
+  <mat-spinner />
+</div>
+}@else{
+
+@if(state().dashboard.selected.sensor.status === 'LOADING' || state().status==='LOADING'){
+<div class="await-dialog">
+  <mat-spinner />
+</div>
+}
+
+@else if(state().dashboard.status === 'ERROR'){
+ERROR
+} @else {
+<div class="contain">
+  <!-- Componente de seccion global -->
+  <app-dashboard-global-container />
+
+  <!-- Componente de tabla de plantas -->
+  @if(deviceService.isMobile()){
+  <app-private-dashboard-table-mobile />
+  }@else if(deviceService.isTablet()){
+  <app-private-dashboard-table-tablet />
+  }@else {
+  <app-private-dashboard-table />
+  }
+
+  <!-- Componente de monitoreo de sensores por plantas -->
+  <app-private-dashboard-sensors-container />
+
+</div>
+
+}
+
+}

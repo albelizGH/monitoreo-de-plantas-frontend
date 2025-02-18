@@ -1,0 +1,33 @@
+<mat-dialog-actions align="end">
+  <ui-button class="cancel-button" mat-dialog-close [typeOfButton]="'mat-icon-button'" [icon]="'close'" />
+</mat-dialog-actions>
+
+<mat-dialog-content class="content">
+  <div class="container">
+
+    <div class="icon">
+      @switch (data.type) {
+      @case('success') {
+      <ui-icon [icon]="'check_circle'" [mode]="'lecturas'" [scale]="'4'" />
+      }
+      @case('error') {
+      <ui-icon [mode]="'alertas-rojas'" [icon]="'error'" [scale]="'4'" />
+      }
+      }
+    </div>
+
+    @switch (data.type) {
+    @case('success') {
+    <h2 mat-dialog-title class="success">Éxito</h2>
+    }
+    @case('error') {
+    <h2 mat-dialog-title class="error">Error</h2>
+    }
+    }
+
+    <div class="message">
+      <p>{{data.text}}</p>
+    </div>
+
+  </div>
+</mat-dialog-content>

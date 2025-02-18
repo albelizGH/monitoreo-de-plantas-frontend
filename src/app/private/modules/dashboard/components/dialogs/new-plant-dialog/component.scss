@@ -1,0 +1,23 @@
+* {
+    font-family: var(--font);
+}
+
+.dialog {
+    font-size: 24px;
+    font-family: var(--font);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 20px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-dialog-actions {
+    gap: 1rem;
+}

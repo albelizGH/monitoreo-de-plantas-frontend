@@ -1,0 +1,6 @@
+<div class="grid">
+  <app-global-card [type]="'lecturas'" [quantity]="data().global.totalReadingsOk" />
+  <app-global-card [type]="'alertas-medias'" [quantity]="data().global.totalMediumAlerts" />
+  <app-global-card [type]="'alertas-rojas'" [quantity]="data().global.totalRedAlerts" />
+  <app-global-card [type]="'sensores'" [quantity]="data().global.totalDisabledSensors" />
+</div>

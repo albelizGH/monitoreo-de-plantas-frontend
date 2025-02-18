@@ -1,0 +1,14 @@
+.title {
+  font-family: var(--font);
+}
+
+.text {
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.5;
+  width: 100%;
+}
+
+mat-dialog-actions {
+  gap: 1rem;
+}

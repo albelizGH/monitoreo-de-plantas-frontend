@@ -1,0 +1,35 @@
+#logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-light-gray);
+  text-decoration: none;
+  margin-bottom: 1rem;
+  height: 48px;
+}
+
+#nav-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  gap: 2rem;
+}
+
+a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+  background: none;
+  border: none;
+}
+
+.mat-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: auto;
+  cursor: pointer;
+}
