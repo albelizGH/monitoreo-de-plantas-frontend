@@ -1,6 +1,10 @@
-# ¡Bienvenido a mi proyecto! 🚀
+# ¡Bienvenido al proyecto! 🚀
 
 Este proyecto es una demostración de una aplicación web construida con Angular, diseñada para ser moderna, eficiente y fácil de usar.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/2a1342a4-d372-47ca-8357-072f47cbeb66">
+</p>
 
 ## ¿Qué la hace especial? ✨
 
@@ -33,16 +37,21 @@ Si quieres saber más sobre cómo he implementado Signals y optimizado las petic
 
 Espero que esta aplicación te guste tanto como a mí me ha gustado crearla. Si tienes alguna pregunta o sugerencia, no dudes en contactarme.
 
+## Imágenes 📷
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8dae89d0-9771-4034-861d-619a923172ab" width="900">
+</p>
+
+<p align="center">
+  
+  <img src="https://github.com/user-attachments/assets/a9ca0082-f935-47dc-b68f-4e9f554ff151" width="500">
+
+  <img src="https://github.com/user-attachments/assets/f8014cf5-2236-4312-8610-772e5f28fa26" width="400">
+
+</p>
+
 **¡Happy coding!** 👨‍💻
-
-**PD:** Este README es solo un borrador. ¡Siéntete libre de personalizarlo y hacerlo tuyo!
-
-**Algunos consejos adicionales:**
-
-*   **Sé específico:** Menciona las tecnologías y herramientas específicas que utilizaste en el proyecto.
-*   **Muestra ejemplos:** Incluye ejemplos de cómo usar la aplicación o de cómo resolviste algún problema técnico.
-*   **Hazlo visual:** Usa imágenes o GIFs para mostrar cómo funciona la aplicación.
-*   **¡No te olvides de la personalidad!** Usa un lenguaje cercano y divertido para conectar con el lector.
 
 ## Backend 🗄️
 
