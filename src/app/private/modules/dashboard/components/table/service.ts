@@ -22,9 +22,7 @@ export class TableService {
   readonly #dialogService: DialogService = inject(DialogService);
   readonly #httpClient: HttpClient = inject(HttpClient);
 
-  public showSensors(plant: IPlant): void {
-    console.log(this.#storeService.state());
-    
+  public showSensors(plant: IPlant): void {    
     if (this.isPlantSelected(plant)) {
       this.deselectPlant();
     } else {
@@ -96,7 +94,6 @@ export class TableService {
     });
 
     this.#storeService.setTable(newTableData);
-    console.log('Tabla actualizada', newTableData);
   }
 
   private selectPlant(plant: IPlant): void {
@@ -180,8 +177,6 @@ export class TableService {
 
 
 public deletePlant(plantId: number): void {
-  console.log('ANTES', this.#storeService.dashboard());
-
   const actualState = this.#storeService.state();
   const table = this.#storeService.table();
   const selectedPlant = this.#storeService.selectedPlant().plant;
@@ -222,8 +217,6 @@ public deletePlant(plantId: number): void {
 
   // Guardamos el nuevo estado en el store
   this.#storeService.setState(newState);
-
-  console.log('DESPUÉS', this.#storeService.dashboard());
 }
 
 

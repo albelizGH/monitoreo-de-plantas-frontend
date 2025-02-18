@@ -51,6 +51,5 @@ export class DetailCardComponent implements OnInit {
 
   public editSensor(): void {
     this.edit.emit(this.data());
-    console.log('Edit sensor', this.data());
   }
 }

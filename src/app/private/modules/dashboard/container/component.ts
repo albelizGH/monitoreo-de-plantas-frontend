@@ -34,7 +34,6 @@ export class PrivateDashboardContainer implements OnInit {
   public readonly state = this.#store.state;
 
   public ngOnInit(): void {
- console.log(this.#store.state());
  this.#store.setDashboardStatus('LOADING');
  this.#privateService.getInitialState().subscribe({
    next: (state) => {
@@ -57,7 +56,6 @@ export class PrivateDashboardContainer implements OnInit {
          },
        },
      })
-     console.log('Estado actualizado', this.#store.state());
    },
    error: (error) => {
      console.error('Error al traer datos', error);

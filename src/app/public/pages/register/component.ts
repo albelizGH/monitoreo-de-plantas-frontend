@@ -51,7 +51,6 @@ export class PublicRegisterPage {
           type: 'success',
           text: 'Usuario registrado exitosamente',
         });
-        console.log(response);
       },
       error: (error) => {
         this.#dialogService.openDialogSuccess({

@@ -7,21 +7,21 @@
 </button>
 }
 @case('mat-raised-button') {
-<button class="raised" type="button" mat-raised-button (click)="onClick()">
+<button class="raised" type="button" mat-raised-button (click)="onClick()" aria-hidden="false">
   @if (legend()) {
   {{ legend() }}
   }
 </button>
 }
 @case('mat-stroked-button') {
-<button class="stroked" type="button" mat-stroked-button (click)="onClick()">
+<button class="stroked" type="button" mat-stroked-button (click)="onClick()" aria-hidden="false">
   @if (legend()) {
   {{ legend() }}
   }
 </button>
 }
 @case('mat-icon-button') {
-<button type="button" mat-icon-button (click)="onClick()">
+<button type="button" mat-icon-button (click)="onClick()" aria-hidden="false">
   <ui-icon [icon]="icon()" [size]="iconSize()" [mode]="mode()" />
 </button>
 }
