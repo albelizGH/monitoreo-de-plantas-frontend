@@ -14,13 +14,8 @@
 
   <div class="grid cards-container" [class.empty-plant]="data().selected.plant.plant === null">
 
-    @if(selectedPlant().status === 'LOADING') {
 
-    <div class="spinner-container">
-      <mat-spinner />
-    </div>
-
-    }@else if(selectedPlant().status === 'LOADED') {
+    @if(selectedPlant().status === 'LOADED') {
 
     @for (item of sensors(); track $index) {
     <app-detail-card [data]="item" (edit)="edit($event)" />
@@ -30,6 +25,13 @@
 
     <div class=" error">
       <p>Ha ocurrido un error al cargar los datos</p>
+    </div>
+
+    }
+    @if(selectedPlant().status === 'LOADING') {
+
+    <div class="spinner-container">
+      <mat-spinner />
     </div>
 
     }

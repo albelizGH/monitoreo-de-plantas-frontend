@@ -158,21 +158,20 @@ export class TableService {
       legendButtonConfirm: 'Eliminar'
     })
 
+    // Tomamos la planta actual y la eliminamos, si el servicio devuelve un error volvemos a colocar la tabla
     dialog.afterClosed(dialog).subscribe((result: boolean) => {
       if (!result) return;
-      this.#storeService.setDashboardStatus('LOADING');
+    this.deletePlant(plant.id);
     this.#httpService.delete(`plants/${plant.id.toString()}`).subscribe({
-      next: () => {
-        this.#storeService.setDashboardStatus('LOADED');
-        this.deletePlant(plant.id);
-      },
       error: (error) => {
+        const plants = [...this.#storeService.dashboard().table.plants, plant];
+        this.#storeService.setTable(plants);
         console.error('Error al eliminar la planta', error);
-        this.#storeService.setDashboardStatus('ERROR');
+        this.#dialogService.openDialogSuccess({
+          type: 'error',
+          text: `Error al intentar eliminar la planta ${plant.name}`
+        });
       },
-      complete: () => {
-        this.#storeService.setDashboardStatus('LOADED');
-      }
     });
   }
   );

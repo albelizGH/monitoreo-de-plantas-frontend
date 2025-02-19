@@ -3,7 +3,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/member-ordering */
-import type { OnInit } from '@angular/core';
 import { ChangeDetectionStrategy, Component, EventEmitter, inject, Output } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import { MatDialogModule, MatDialogRef} from '@angular/material/dialog';
@@ -18,10 +17,8 @@ import { ButtonComponent } from '../../../../../../../ui/_index';
 import { MatMenuModule } from '@angular/material/menu';
 import { StoreService } from '../../../../../store/service/store.service';
 import { HttpService } from '../../../../../../core/services/http.service';
-import { error } from 'console';
 import { DialogService } from '../../../services/dialog.service';
-import { IConfirmDialogData } from '../confirm-dialog/component';
-import { EXAMPLE } from '../../../../../store/constants/states';
+
 
 
 @Component({
@@ -126,18 +123,17 @@ export class UpdateSensorDialog  {
             return; // No hacer la petición
           }
         }
-    
-  
+
+        //Tomamos el sensor viejo lo editamos y lo cambiamos localmente, si falla la petición se vuelve a su estado anterior
+        const oldSensor = this.#store.dashboard().selected.sensor.sensor;
         // Si los sensores son diferentes, continuar con la actualización
-        this.#store.setSensorStatus('LOADING');
-      
+        const sensor = this.takeFormValues();
+        if (!sensor) return;
+        this.updateLocalState(sensor);
         this.#httpService.put(`readings/${newSensor.id}`, newSensor).subscribe({
-          next: (response) => {
-            this.updateLocalState();
-            this.#store.setSensorStatus('LOADED');
-            this.#dialogService.openDialogSuccess({type: 'success', text: `El sensor de ${newSensor.name} se ha actualizado correctamente`});
-          },
           error: () => {
+            if(!oldSensor) return;
+            this.updateLocalState(oldSensor);
             this.#dialogService.openDialogSuccess({type: 'error', text: `Ha ocurrido un error al intentar actualizar el sensor de ${newSensor.name}`});
           },
         });
@@ -145,9 +141,8 @@ export class UpdateSensorDialog  {
     }
   }
 
-  public updateLocalState(): void {
+  public updateLocalState(sensor:IReading): void {
 
-    const sensor = this.takeFormValues();
     if (!this.#store.selectedPlant().plant || !sensor) return;
 
     const plant = this.#store.selectedPlant().plant;

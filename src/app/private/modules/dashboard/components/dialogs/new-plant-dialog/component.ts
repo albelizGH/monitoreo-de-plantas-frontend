@@ -59,13 +59,28 @@ export class NewPlantDialog {
   public create(): void {
     const plant = this.takeFormValues();
     if (plant) {
+      // Se crea la planta con id=-1, una vez creada le cambio el id con la respuesta del servidor y si da error el servidor se muestra un mensaje de error
+      //De esta manera se le da al usuario una impresión de velocidad en la creación de la planta
+      // Creo una nueva planta con los datos que me devolvió el servidor y la agrego al store
+      const newPlant: IPlant = {
+        id: -1,
+        name: plant.name,
+        country: { name: plant.country, imageUrl: plant.imageUrl },
+        sensors: [],
+        readingsOk: 0,
+        mediumAlerts: 0,
+        redAlerts: 0,
+        disabledSensors: 0
+      };
+      const plants = [...this.#storeService.dashboard().table.plants, newPlant];
+      this.#storeService.setTable(plants);
+      this.#thisDialog.close();
+      this.#dialogService.openDialogSuccess({ type: 'success', text: `La planta ${plant.name}, ${plant.country} fue creada correctamente` });
       this.#httpService.post<ICreatePlantRequest, Partial<IPlant>>('plants', plant).subscribe({
         next: (res) => {
-          // Creo una nueva planta con los datos que me devolvió el servidor y la agrego al store
+          // Actualizo la planta con el id que me devolvió el servidor
           const newPlant: IPlant = {
-            // Es por el Partial<IPlant> que devuelve el servidor pero siempre viene con datos
-            // Para crear una nueva planta, espero que el servidor me devuelva un id
-            id: res.id ?? 0,
+            id: res.id??-1,
             name: plant.name,
             country: { name: plant.country, imageUrl: plant.imageUrl },
             sensors: [],
@@ -74,12 +89,14 @@ export class NewPlantDialog {
             redAlerts: 0,
             disabledSensors: 0
           };
-          const plants = [...this.#storeService.dashboard().table.plants, newPlant];
-          this.#storeService.setTable(plants);
-          this.#thisDialog.close();
-          this.#dialogService.openDialogSuccess({ type: 'success', text: `La planta ${plant.name}, ${plant.country} fue creada correctamente` });
+          // Elimino de la tabla la planta con id=-1 y agrego la planta con el id que me devolvió el servidor
+          const plants = this.#storeService.dashboard().table.plants.filter(p => p.id !== -1);
+          this.#storeService.setTable([...plants, newPlant]);
         },
         error: () => {
+          // Si hay un error al crear la planta muestro un mensaje de error y elimino la planta con id=-1 de la tabla
+          const plants = this.#storeService.dashboard().table.plants.filter(p => p.id !== -1);
+          this.#storeService.setTable(plants)
           this.#thisDialog.close();
           this.#dialogService.openDialogSuccess({ type: 'error', text: `Se produjo un error al intentar crear la planta ${plant.name}, ${plant.country}` });
         },
