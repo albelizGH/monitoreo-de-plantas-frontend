@@ -28,14 +28,6 @@
     </div>
 
     }
-    @if(selectedPlant().status === 'LOADING') {
-
-    <div class="spinner-container">
-      <mat-spinner />
-    </div>
-
-    }
-
     <!-- Mensaje si no hay planta seleccionada -->
     @if(selectedPlant().plant === null) {
 
@@ -44,5 +36,11 @@
     </div>
 
     }
-
   </div>
+  @if(selectedPlant().status === 'LOADING') {
+
+  <div class="spinner-container">
+    <mat-spinner />
+  </div>
+
+  }
