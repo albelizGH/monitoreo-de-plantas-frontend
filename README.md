@@ -20,7 +20,7 @@ Este proyecto es una demostración de una aplicación web construida con Angular
 
 2.  **Menos peticiones, más eficiencia:** He implementado estrategias para reducir las peticiones al backend, como el uso de caché y la actualización selectiva de datos. Esto se traduce en una aplicación más rápida y con mejor rendimiento. ⬆️
 
-3.  **Responsive para todos:** Gracias a mi diseño responsive, la aplicación se ve y funciona de maravilla en cualquier dispositivo. ¡Pruébala en tu móvil, tablet u ordenador! 🌐
+3.  **Responsive para todos:** Gracias al diseño responsive, la aplicación se ve y funciona de maravilla en cualquier dispositivo. ¡Pruébala en tu móvil, tablet u ordenador! 🌐
 
 ## ¿Cómo usar este proyecto? 🛠️
 
