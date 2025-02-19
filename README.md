@@ -26,8 +26,9 @@ Este proyecto es una demostración de una aplicación web construida con Angular
 
 1.  Clona este repositorio.
 2.  Instala las dependencias con `npm install`.
-3.  Inicia el servidor de desarrollo con `ng serve`.
-4.  ¡Abre la aplicación en tu navegador y disfruta! 🎉
+3.  Modifica las variables de entorno para las peticiones.
+4.  Inicia el servidor de desarrollo con `ng serve`.
+5.  ¡Abre la aplicación en tu navegador y disfruta! 🎉
 
 ## ¡Anímate a explorar el código! 🕵️‍♀️
 
