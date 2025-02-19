@@ -103,16 +103,32 @@ export class TableService {
 
   create() {
     //Traemos los paises de la api
-    this.#storeService.setDashboardStatus('LOADING');
+    //Para ello, primero actualizamos el estado a "Cargando"
+    this.#storeService.updateState({
+  
+        ...this.#storeService.state(),
+        status: 'LOADING'
+      
+    });
     this.getCountries().subscribe({
       next: (res: ICountry[]) => {
         const sortedCountries = res.sort((a, b) => a.name.localeCompare(b.name));
-        this.#storeService.setDashboardStatus('LOADED');
-        this.#dialogService.openNewPlantDialog(sortedCountries);
+   
+      this.#dialogService.openNewPlantDialog(sortedCountries);
       },
       error: (error) => {
         console.error('Error al obtener los países', error);
+ 
+      },
+      complete: () => {
+        this.#storeService.updateState({
+  
+          ...this.#storeService.state(),
+          status: 'LOADED'
+        
+      });    
       }
+
     });
     
   }

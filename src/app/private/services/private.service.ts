@@ -28,7 +28,7 @@ export class PrivateService {
   readonly #http: HttpService = inject(HttpService);
 
   public getInitialState(): Observable<IIntialState> {
-    return this.#http.get<IIntialStateApiResponse, any>('initial-state', { id: 1 }).pipe(
+    return this.#http.get<IIntialStateApiResponse, any>('initial-state',undefined).pipe(
       map((response:IIntialStateApiResponse) => {
         return {
           user: response.user,
