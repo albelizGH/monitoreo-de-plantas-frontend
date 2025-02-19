@@ -1,59 +1,56 @@
-# TechEntrega
+# ¡Bienvenido al proyecto! 🚀
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.6.
+Este proyecto es una demostración de una aplicación web construida con Angular, diseñada para ser moderna, eficiente y fácil de usar.
 
-## Development server
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/2a1342a4-d372-47ca-8357-072f47cbeb66">
+</p>
 
-To start a local development server, run:
+## ¿Qué la hace especial? ✨
 
-```bash
-ng serve
-```
+*   **Estado global inteligente:** Gracias a la implementación de Signals de Angular, he logrado un manejo del estado global de la aplicación superlativo. Esto significa que los datos se actualizan de manera reactiva y eficiente, ¡olvídate de recargar la página para ver los cambios! 🧠
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+*   **Peticiones al backend optimizadas:** He reducido al mínimo las peticiones al backend, lo que se traduce en una experiencia de usuario más fluida y una menor carga en el servidor. ¡Más rápido, más eficiente! ⚡
 
-## Code scaffolding
+*   **Responsive de verdad:** La aplicación se adapta a cualquier dispositivo, desde tu móvil hasta tu ordenador de escritorio. ¡Pruébala en cualquier pantalla y verás la magia! 📱💻
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## ¿Cómo funciona? ⚙️
 
-```bash
-ng generate component component-name
-```
+1.  **Estado global con Signals:** Las Signals me permiten mantener un estado global de la aplicación que se actualiza automáticamente cuando hay cambios. Esto simplifica la gestión de datos y la comunicación entre componentes. 🔄
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+2.  **Menos peticiones, más eficiencia:** He implementado estrategias para reducir las peticiones al backend, como el uso de caché y la actualización selectiva de datos. Esto se traduce en una aplicación más rápida y con mejor rendimiento. ⬆️
 
-```bash
-ng generate --help
-```
+3.  **Responsive para todos:** Gracias al diseño responsive, la aplicación se ve y funciona de maravilla en cualquier dispositivo. ¡Pruébala en tu móvil, tablet u ordenador! 🌐
 
-## Building
+## ¿Cómo usar este proyecto? 🛠️
 
-To build the project run:
+1.  Clona este repositorio.
+2.  Instala las dependencias con `npm install`.
+3.  Clona el backend y sigue los pasos del readme para ejecutarlo <https://github.com/albelizGH/monitoreo-plantas-backend>
+4.  Modifica las variables de entorno para las peticiones.
+5.  Inicia el servidor de desarrollo con `ng serve`.
+6.  ¡Abre la aplicación en tu navegador y disfruta! 🎉
 
-```bash
-ng build
-```
+## ¡Anímate a explorar el código! 🕵️‍♀️
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Si quieres saber más sobre cómo he implementado Signals y optimizado las peticiones al backend, no dudes en echar un vistazo al código. ¡Estoy seguro de que encontrarás cosas interesantes!
 
-## Running unit tests
+## ¡Gracias por visitar mi proyecto! 🙏
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Espero que esta aplicación te guste tanto como a mí me ha gustado crearla. Si tienes alguna pregunta o sugerencia, no dudes en contactarme.
 
-```bash
-ng test
-```
+## Imágenes 📷
 
-## Running end-to-end tests
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8dae89d0-9771-4034-861d-619a923172ab" width="900">
+</p>
 
-For end-to-end (e2e) testing, run:
+<p align="center">
+  
+  <img src="https://github.com/user-attachments/assets/a9ca0082-f935-47dc-b68f-4e9f554ff151" width="500">
 
-```bash
-ng e2e
-```
+  <img src="https://github.com/user-attachments/assets/f8014cf5-2236-4312-8610-772e5f28fa26" width="400">
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+</p>
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+**¡Happy coding!** 👨‍💻
