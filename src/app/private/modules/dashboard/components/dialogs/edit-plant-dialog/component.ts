@@ -40,8 +40,8 @@ export class EditPlantDialog {
   readonly #thisDialog = inject(MatDialogRef<EditPlantDialog>);
 
   public form = new FormGroup({
-    name: new FormControl(this.#storeService.selectedPlant().plant?.name ?? '', Validators.required),
-    country: new FormControl(this.#storeService.selectedPlant().plant?.country ?? '', Validators.required),
+    name: new FormControl(this.data.data.name?? '', Validators.required),
+    country: new FormControl(this.data.data.country.name ?? '', Validators.required),
   });
 
   public matcher = new ErrorStateMatcher();
