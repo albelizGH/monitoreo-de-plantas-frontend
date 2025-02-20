@@ -80,6 +80,18 @@ button {
   color: var(--color-light-gray);
 }
 
+.bad-request {
+  & p {
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  text-align: center;
+  border-radius: 5px;
+  color: var(--color-dark-gray);
+  background-color: rgba(255, 0, 0, 0.415);
+}
+
 @media (width < 860px) {
   .register-form__actions {
     flex-wrap: wrap;

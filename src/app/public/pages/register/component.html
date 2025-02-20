@@ -1,6 +1,14 @@
 <form class="register-form" [formGroup]="form">
-  <div class="register-form__fields">
 
+
+  @if(badRequest())
+  {
+  <div class="bad-request">
+    <p>Error al intentar registrarse</p>
+  </div>
+  }
+
+  <div class="register-form__fields">
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Usuario</mat-label>
       <input type="text" matInput [placeholder]="'Ingrese su email'" [formControl]="userFormControl"

@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { repeat } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -9,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { HttpService } from '../../../core/services/http.service';
 import { DialogService } from '../../../private/modules/dashboard/services/dialog.service';
 import { MatIcon } from '@angular/material/icon';
+import { Router, RouterModule } from '@angular/router';
 
 interface IRegisterUser {
   user: string;
@@ -22,7 +22,7 @@ interface IRegisterUser {
   selector: 'app-public-register-page',
   templateUrl: './component.html',
   styleUrl: './component.scss',
-  imports: [MatDialogModule, MatButtonModule, FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule,MatIcon],
+  imports: [MatDialogModule, MatButtonModule, FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule,MatIcon,RouterModule],
 })
 export class PublicRegisterPage {
 
@@ -34,7 +34,9 @@ export class PublicRegisterPage {
   });
 
   public hide = true;
+  public readonly badRequest = signal<boolean>(false);
   public matcher = new ErrorStateMatcher();
+  readonly #router: Router = inject(Router);
 
   public emailFormControl = this.form.get('email') as FormControl;
   public passwordFormControl = this.form.get('password') as FormControl;
@@ -53,12 +55,10 @@ export class PublicRegisterPage {
           type: 'success',
           text: 'Usuario registrado exitosamente',
         });
+        this.#router.navigate(['/login']);
       },
       error: (error) => {
-        this.#dialogService.openDialogSuccess({
-          type: 'error',
-          text: 'Ha ocurrido un error al intentar registrar el usuario',
-        });
+        this.badRequest.set(true);
       },
       complete: () => {
         this.form.reset();

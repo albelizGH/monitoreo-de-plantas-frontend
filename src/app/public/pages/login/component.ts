@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -25,7 +25,7 @@ export class PublicLoginPage {
     });
 
     public hide = true;
-  
+    public readonly badRequest = signal<{passwordEmail: boolean,error: boolean}>({passwordEmail: false,error: false});
     public matcher = new ErrorStateMatcher();
     
     public emailFormControl = this.form.get('email') as FormControl;
@@ -41,6 +41,8 @@ export class PublicLoginPage {
         return;
       }
 
+      this.badRequest.set({passwordEmail: false, error: false});
+
       const user: ILogin = {
         email: (this.form.value as { email: string; password: string }).email ?? '',
         password: (this.form.value as { email: string; password: string }).password ?? '',
@@ -53,15 +55,9 @@ export class PublicLoginPage {
         },
         error: (error) => {
           if (error.status === 403 || error.status === 400) {
-            this.#dialogService.openDialogSuccess({
-              type: 'error',
-              text: 'Usuario o contraseña incorrectos',
-            });
+            this.badRequest.set({passwordEmail: true, error: false});
           } else {
-            this.#dialogService.openDialogSuccess({
-              type: 'error',
-              text: 'Ha ocurrido un error al intentar iniciar sesión',
-            });
+            this.badRequest.set({passwordEmail: false, error: true});
           }
         },
         complete: () => {

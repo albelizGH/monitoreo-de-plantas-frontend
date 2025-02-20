@@ -69,6 +69,7 @@ main {
       font-weight: 500;
       margin-bottom: 3rem;
     }
+
   }
 }
 
@@ -105,6 +106,8 @@ button {
 mat-icon {
   color: var(--color-secondary);
 }
+
+
 
 @media (width <=768px) {
   main {

@@ -1,4 +1,17 @@
 <form class="login-form" [formGroup]="form">
+
+  @if(badRequest().passwordEmail)
+  {
+  <div class="bad-request">
+    <p>Correo o contraseñas incorrectos</p>
+  </div>
+  }@else if(badRequest().error)
+  {
+  <div class="bad-request">
+    <p>Error al intentar iniciar sesión</p>
+  </div>
+  }
+
   <div class="login-form__fields">
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Email</mat-label>
@@ -26,7 +39,6 @@
     </mat-form-field>
 
   </div>
-
 
   <div class="login-form__actions">
     <a href="/not-found">¿Olvidaste tu contraseña?</a>
