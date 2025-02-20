@@ -134,7 +134,11 @@ export class TableService {
   }
 
   edit(plant: IPlant) {
-    this.#storeService.setDashboardStatus('LOADING');
+    this.#storeService.updateState({
+      ...this.#storeService.state(),
+      status: 'LOADING'
+    
+  });
     this.getCountries().subscribe({
       next: (res: ICountry[]) => {
         const sortedCountries = res.sort((a, b) => a.name.localeCompare(b.name));
@@ -144,7 +148,15 @@ export class TableService {
       error: (error) => {
         console.error('Error al obtener los países', error);
         this.#storeService.setDashboardStatus('ERROR'); // Opcional: manejar estado de error
+      },
+      complete: () => {
+        this.#storeService.updateState({
+          ...this.#storeService.state(),
+          status: 'LOADED'
+        
+      });    
       }
+
     });
 }
 
