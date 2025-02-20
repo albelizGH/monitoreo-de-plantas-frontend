@@ -13,7 +13,11 @@
 
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Contraseña</mat-label>
-      <input type="password" matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher" />
+      <input type="{{this.hide==true?'password':'text'}}" matInput [formControl]="passwordFormControl"
+        [errorStateMatcher]="matcher" />
+      <button mat-icon id="hide-btn" type="button" matSuffix (click)="hidePassword()">
+        <mat-icon matSuffix>{{hide?'visibility':'visibility_off'}}</mat-icon>
+      </button>
       <mat-hint></mat-hint>
 
       @if (passwordFormControl.hasError('required')) {
@@ -26,7 +30,7 @@
 
   <div class="login-form__actions">
     <a href="/not-found">¿Olvidaste tu contraseña?</a>
-    <button mat-raised-button (click)="login()" type="button">Iniciar Sesión</button>
+    <button mat-raised-button (click)="login()" type="button" id="login-btn">Iniciar Sesión</button>
   </div>
 
   <span class="conditions">Protegido por reCAPTCHA y sujeto a la <a href="/not-found">Política de Privacidad</a> y

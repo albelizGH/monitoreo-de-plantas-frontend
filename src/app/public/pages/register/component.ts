@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { HttpService } from '../../../core/services/http.service';
 import { DialogService } from '../../../private/modules/dashboard/services/dialog.service';
+import { MatIcon } from '@angular/material/icon';
 
 interface IRegisterUser {
   user: string;
@@ -21,7 +22,7 @@ interface IRegisterUser {
   selector: 'app-public-register-page',
   templateUrl: './component.html',
   styleUrl: './component.scss',
-  imports: [MatDialogModule, MatButtonModule, FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
+  imports: [MatDialogModule, MatButtonModule, FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule,MatIcon],
 })
 export class PublicRegisterPage {
 
@@ -32,6 +33,7 @@ export class PublicRegisterPage {
     username: new FormControl('', [Validators.required]),
   });
 
+  public hide = true;
   public matcher = new ErrorStateMatcher();
 
   public emailFormControl = this.form.get('email') as FormControl;
@@ -41,7 +43,7 @@ export class PublicRegisterPage {
   readonly #httpService = inject(HttpService);
   readonly #dialogService = inject(DialogService);
 
-  registre() {
+  register() {
     if(!this.form.valid || !this.passwordMatchValidator()) {
       return;
     }
@@ -74,5 +76,10 @@ export class PublicRegisterPage {
         return true;
       }
     }
+
+    hidePassword(): void {
+      this.hide = !this.hide;
+    }
+
     
 }

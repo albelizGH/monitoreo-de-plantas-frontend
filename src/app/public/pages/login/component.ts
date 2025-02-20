@@ -9,19 +9,22 @@ import { HttpService } from '../../../core/services/http.service';
 import { DialogService } from '../../../private/modules/dashboard/services/dialog.service';
 import { AuthService, ILogin } from '../../../core/services/auth.service';
 import { Router } from '@angular/router';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-public-login-page',
   templateUrl: './component.html',
   styleUrl: './component.scss',
-  imports: [MatDialogModule, MatButtonModule, FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
+  imports: [MatDialogModule, MatButtonModule, FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule,MatIcon],
 })
 export class PublicLoginPage {
     form  = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
     });
+
+    public hide = true;
   
     public matcher = new ErrorStateMatcher();
     
@@ -65,6 +68,10 @@ export class PublicLoginPage {
           this.form.reset();
         }
       });
+    }
+
+    hidePassword(): void {
+      this.hide = !this.hide;
     }
   
 
